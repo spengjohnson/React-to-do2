@@ -33,18 +33,22 @@ class App extends Component {
     this.setState({ todos: todos}); 
   }
 
-  deleteTodo(e)
-  //pass a new array that doesn't have the todo item being deleted using this.setState. maybe use filter() method? 
-  
+  deleteTodo(index) {
+    const todos = this.state.todos.slice(); 
+    const todoToDelete = todos[index]; 
+    const filteredToDos = todos.filter(todo => todo !== todoToDelete)
+    this.setState({todos: filteredToDos}); 
+  }
+
   render() {
     return (
       <div className="App">
        <ul>
          { this.state.todos.map( (todo, index) =>
-           <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } />
+           <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } deleteTodo={ () => this.deleteTodo(index) } />
          )}
        </ul>
-       <form onSubmit={ (e) => this.state.newTodoDescription }> 
+       <form onSubmit={ (event) => this.handleSubmit(event) } >
         <input type ="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
         <input type="submit" />
       </form>
@@ -53,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;   
+export default App;
