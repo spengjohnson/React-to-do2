@@ -26,13 +26,16 @@ class App extends Component {
     this.setState({ todos: [...this.state.todos, newTodo], newTodoDescription: '' }); 
   }
 
-toggleComplete(index) {
-  const todos = this.state.todos.slice(); 
-  const todo = todos[index]; 
-  todo.isCompleted = todo.isCompleted ? false : true; 
-  this.setState({ todos: todos}); 
-}
+  toggleComplete(index) {
+    const todos = this.state.todos.slice(); 
+    const todo = todos[index]; 
+    todo.isCompleted = todo.isCompleted ? false : true; 
+    this.setState({ todos: todos}); 
+  }
 
+  deleteTodo(e)
+  //pass a new array that doesn't have the todo item being deleted using this.setState. maybe use filter() method? 
+  
   render() {
     return (
       <div className="App">

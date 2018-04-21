@@ -11,6 +11,28 @@ class ToDo extends Component {
   }
 }
 
+class Button extends React.Component {
+	render() {
+		const{
+			variant,
+			content
+		}= this.props; 
+
+		return{
+			<button className="Delete">
+			</button>
+			)
+		}
+	}
+}
+
+React.render(
+	<div>
+		<Button content="Delete" variant="red" />
+		document.getElementById('root')
+	); 
+
+
 export default ToDo;
 
 
